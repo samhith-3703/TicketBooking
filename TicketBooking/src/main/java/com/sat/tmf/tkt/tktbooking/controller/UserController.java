@@ -1,8 +1,12 @@
 package com.sat.tmf.tkt.tktbooking.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -20,6 +24,8 @@ public class UserController {
 	UserService userService;
 
 	@RequestMapping(value="/test", method = RequestMethod.GET)
+//	@GetMapping
+//	@PostMapping
 	public String testMethod(@RequestParam("uname") String userName) {
 		System.out.println("This is a testMethod() @ UserController");
 		System.out.println("User Name:"+userName);
@@ -38,5 +44,11 @@ public class UserController {
 		User userResp = userService.registerNewUser(user);
 		System.out.println(userResp.getId());
 		return null;
+	}
+	
+	@RequestMapping(value="/allUsers", method=RequestMethod.GET)
+	public List<User> getAllUsers() {
+		System.out.println(userService.getAllUsers());
+		return userService.getAllUsers();
 	}
 }
