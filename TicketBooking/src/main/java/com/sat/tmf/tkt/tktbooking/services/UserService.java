@@ -1,5 +1,7 @@
 package com.sat.tmf.tkt.tktbooking.services;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,5 +25,9 @@ public class UserService {
 		
 		userRepo.save(userEntity);
 		return userRepo.save(userEntity);
+	}
+	
+	public List<User> getAllUsers(){
+		return userRepo.findAll();
 	}
 }
